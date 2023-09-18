@@ -13,6 +13,18 @@ class Inventory:
         except FileNotFoundError:
             self.dishes = {}
 
+    def load_orders(self):
+        try:
+            with open("orders.json", "r") as file:
+                self.order = json.load(file)
+        except FileNotFoundError:
+            self.order = []
+
+    def save_orders(self):
+        with open("orders.json", "w") as file:
+            json.dump(self.order, file, indent=4)
+
+
     def save_data(self):
         serialized_data = {}
         for category, dishes in self.dishes.items():
@@ -22,6 +34,8 @@ class Inventory:
 
     def __init__(self):
         self.load_data()
+        self.load_orders()
+        self.order = []
 
     def addDish(self,id,name,price,availability,category):
         if category not in self.dishes:
@@ -91,4 +105,76 @@ class Inventory:
             print(f"No dish with ID {id} found in the menu.")
             print("------------------------------------------------")
 
-        
+    def take_order(self):
+        print("------------------------------------------------")
+        print("Menu for Taking a New Order")
+        all_dishes = self.get_all_dishes()
+        for dishdetails in all_dishes:
+            print("--------------------------------------------")
+            print(dishdetails)
+            print("--------------------------------------------")
+
+        order_total = 0
+
+
+        while True:
+            try:
+                id = int(input("Enter the ID of the dish you want to order (or 0 to exit): "))
+                if id == 0:
+                    print("Order process canceled.")
+                    return
+                if any(dish.id == id for dishes in self.dishes.values() for dish in dishes):
+                    name = input("Enter name of the Customer: ")
+                    quantity = int(input("Enter the quantity: "))
+                    if quantity < 1:
+                        print("Quantity must be greater than 0.")
+                    else:
+                        selected_dish = None
+                        for dishes in self.dishes.values():
+                            for dish in dishes:
+                                if dish.id == id:
+                                    selected_dish = dish
+                                    break
+                        if selected_dish:
+                            item_total = selected_dish.price * quantity
+                        print(f"Added order in the name of {name} for {quantity} units of {selected_dish.name} to the order.")
+                        order_total += item_total
+
+                        self.order.append({
+                            "customer_name" : name,
+                            "id": selected_dish.id,
+                            "name": selected_dish.name,
+                            "quantity": quantity,
+                            "total": item_total
+                        })
+                        self.save_orders()
+                else:
+                    print("Invalid Dish ID. Please enter a valid ID from the menu.")
+            except ValueError:
+                print("Invalid input. Please enter a valid number.")
+
+            print("------------------------------------------------")
+            print("Order Details:")
+            for item in self.order:
+                print(f"Customer Name: {item['customer_name']}, Dish: {item['name']}, Quantity: {item['quantity']}, Total: ${item['total']}")
+            print(f"Order Total: ${order_total}")
+            print("------------------------------------------------")
+
+    def get_all_orders(self):
+        self.load_orders()
+        if not self.order:
+            print("No orders found.")
+            return
+        print("------------------------------------------------")
+        print("All Orders:")
+        for index, order_item in enumerate(self.order, start=1):
+            print(f"Order {index}:")
+            print(f"Customer Name: {order_item['customer_name']}")
+            print(f"Dish: {order_item['name']}")
+            print(f"Quantity: {order_item['quantity']}")
+            print(f"Total: ${order_item['total']}")
+            print("--------------------------------------------")
+        print("------------------------------------------------")
+
+
+

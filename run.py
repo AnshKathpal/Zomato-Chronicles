@@ -14,7 +14,13 @@ while True:
     print("+------------------------+")
     print("+ 4. Remove Dish         +")
     print("+------------------------+")
-    print("+ 5. Exit                +")
+    print("+ 5. Take New Order      +")
+    print("+------------------------+")
+    print("+ 6. Review Orders       +")
+    print("+------------------------+")
+    print("+ 7. Update Order Status +")
+    print("+------------------------+")
+    print("+ 8. Exit                +")
     print("+------------------------+")
 
     choice = input("Select an option (1/2/3/4/5): ")
@@ -66,6 +72,10 @@ while True:
     elif choice == "4":
         inventory.remove_Dish()
     elif choice == "5":
+        inventory.take_order()
+    elif choice == "6":
+        inventory.get_all_orders()
+    elif choice == "8":
         print("Exiting the application.")
         inventory.save_data()
         break
