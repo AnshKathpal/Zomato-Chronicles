@@ -1,0 +1,11 @@
+{
+    "All Day": [
+        {
+            "id": 1,
+            "name": "Pizza",
+            "price": 200.0,
+            "availability": "No",
+            "category": "All Day"
+        }
+    ]
+}
