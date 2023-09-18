@@ -6,6 +6,13 @@
             "price": 200.0,
             "availability": "No",
             "category": "All Day"
+        },
+        {
+            "id": 2,
+            "name": "Pasta",
+            "price": 200.0,
+            "availability": "No",
+            "category": "All Day"
         }
     ]
 }

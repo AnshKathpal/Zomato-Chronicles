@@ -75,6 +75,9 @@ while True:
         inventory.take_order()
     elif choice == "6":
         inventory.get_all_orders()
+    elif choice == "7":
+        order_id = int(input("Enter the ID of the order you want to update: "))
+        inventory.update_order_status(order_id)
     elif choice == "8":
         print("Exiting the application.")
         inventory.save_data()

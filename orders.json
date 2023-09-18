@@ -1,9 +1,41 @@
 [
     {
+        "order_id": 1,
         "customer_name": "Ansh Kathpal",
-        "id": 1,
-        "name": "Pizza",
-        "quantity": 10,
-        "total": 2000.0
+        "status": "received",
+        "items": [
+            {
+                "id": 2,
+                "name": "Pasta",
+                "quantity": 5,
+                "total": 1000.0
+            }
+        ]
+    },
+    {
+        "order_id": 2,
+        "customer_name": "Ansh",
+        "status": "ready for pickup",
+        "items": [
+            {
+                "id": 2,
+                "name": "Pasta",
+                "quantity": 3,
+                "total": 600.0
+            }
+        ]
+    },
+    {
+        "order_id": 3,
+        "customer_name": "Kathpal",
+        "status": "received",
+        "items": [
+            {
+                "id": 1,
+                "name": "Pizza",
+                "quantity": 2,
+                "total": 400.0
+            }
+        ]
     }
 ]
