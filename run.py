@@ -23,7 +23,7 @@ while True:
     print("+ 8. Exit                +")
     print("+------------------------+")
 
-    choice = input("Select an option (1/2/3/4/5): ")
+    choice = input("Select an option (1/2/3/4/5/6/7/8): ")
 
     if choice == "1":
         id = int(input("Enter Dish Id: "))
@@ -74,7 +74,27 @@ while True:
     elif choice == "5":
         inventory.take_order()
     elif choice == "6":
-        inventory.get_all_orders()
+        print("Filter Orders by Status:")
+        print("1. Received")
+        print("2. Ready for Pickup")
+        print("3. Delivered")
+        print("4. Show All Orders")
+        status_choice = input("Enter a number (1/2/3/4): ")
+    
+        if status_choice == "1":
+            status_filter = "received"
+        elif status_choice == "2":
+            status_filter = "ready for pickup"
+        elif status_choice == "3":
+            status_filter = "delivered"
+        elif status_choice == "4":
+            status_filter = None
+        else:
+            print("Invalid choice. Showing all orders.")
+            status_filter = None
+
+        inventory.get_all_orders(status_filter)
+
     elif choice == "7":
         order_id = int(input("Enter the ID of the order you want to update: "))
         inventory.update_order_status(order_id)

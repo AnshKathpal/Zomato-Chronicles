@@ -182,7 +182,7 @@ class Inventory:
             print(f"Order Total: ${order_total}")
             print("------------------------------------------------")
 
-    def get_all_orders(self):
+    def get_all_orders(self,status_filter=None):
         self.load_orders()
         if not self.order:
             print("No orders found.")
@@ -190,23 +190,24 @@ class Inventory:
         print("------------------------------------------------")
         print("All Orders:")
         for order_item in self.order:
-            print(f"Order ID: {order_item['order_id']}")
-            print(f"Customer Name: {order_item['customer_name']}")
-            print(f"Order Status: {order_item['status']}")
-            for item in order_item['items']:
-                dish_id = item['id']
-                dish_name = None
-                for category, dishes in self.dishes.items():
-                    for dish in dishes:
-                        if dish.id == dish_id:
-                            dish_name = dish.name
+            if status_filter is None or order_item['status'] == status_filter:
+                print(f"Order ID: {order_item['order_id']}")
+                print(f"Customer Name: {order_item['customer_name']}")
+                print(f"Order Status: {order_item['status']}")
+                for item in order_item['items']:
+                    dish_id = item['id']
+                    dish_name = None
+                    for category, dishes in self.dishes.items():
+                        for dish in dishes:
+                            if dish.id == dish_id:
+                                dish_name = dish.name
+                                break
+                        if dish_name:
                             break
-                    if dish_name:
-                        break
-                print(f"Dish: {dish_name}")
-                print(f"Quantity: {item['quantity']}")
-                print(f"Total: ${item['total']}")
-                print("--------------------------------------------")
+                    print(f"Dish: {dish_name}")
+                    print(f"Quantity: {item['quantity']}")
+                    print(f"Total: ${item['total']}")
+                    print("--------------------------------------------")
         print("------------------------------------------------")
 
     def update_order_status(self, order_id):
