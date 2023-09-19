@@ -13,6 +13,40 @@
             "price": 200.0,
             "availability": "No",
             "category": "All Day"
+        },
+        {
+            "id": 3,
+            "name": "Coffee",
+            "price": 200.0,
+            "availability": "Yes",
+            "category": "All Day"
+        }
+    ],
+    "Dinner": [
+        {
+            "id": 4,
+            "name": "Paneer",
+            "price": 160.0,
+            "availability": "Yes",
+            "category": "Dinner"
+        }
+    ],
+    "Breakfast": [
+        {
+            "id": 5,
+            "name": "Aalo Prantha",
+            "price": 60.0,
+            "availability": "Yes",
+            "category": "Breakfast"
+        }
+    ],
+    "All_Day": [
+        {
+            "id": 6,
+            "name": "Chai",
+            "price": 20.0,
+            "availability": "Yes",
+            "category": "All_Day"
         }
     ]
 }

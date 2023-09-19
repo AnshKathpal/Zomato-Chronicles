@@ -1,6 +1,13 @@
 from inventory import Inventory
+import pyfiglet
 
+text = pyfiglet.figlet_format("Zesty Zomato", width=150)
+updated = pyfiglet.figlet_format("Updated", width=100)
+removed = pyfiglet.figlet_format("Removed", width=100)
+exit = pyfiglet.figlet_format("Thank You !!", width=100)
 inventory = Inventory()
+
+print(text)
 
 while True:
     print("+------------------------+")
@@ -59,6 +66,7 @@ while True:
                     print(
                         f"Availability for Dish with ID {id} updated to {update_availability}.")
                     print("--------------------------------------------")
+                    print(updated)
                     break
             if dish_Found:
                 break
@@ -100,6 +108,7 @@ while True:
         inventory.update_order_status(order_id)
     elif choice == "8":
         print("Exiting the application.")
+        print(exit)
         inventory.save_data()
         break
     else:

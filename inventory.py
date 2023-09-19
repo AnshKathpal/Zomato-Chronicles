@@ -1,5 +1,9 @@
 from main import Dishes
 import json
+import pyfiglet
+removed = pyfiglet.figlet_format("Removed", width=100)
+placed = pyfiglet.figlet_format("Ordered", width=100)
+updated = pyfiglet.figlet_format("Status Updated", width=100)
 
 
 class Inventory:
@@ -99,6 +103,7 @@ class Inventory:
                 print(
                     f"Dish with ID {id} has been removed from the menu.")
                 print("------------------------------------------------")
+                print(removed)
                 self.save_data()
             else:
                 print("------------------------------------------------")
@@ -181,6 +186,7 @@ class Inventory:
                     f"Dish: {item['name']}, Quantity: {item['quantity']}, Total: ${item['total']}")
             print(f"Order Total: ${order_total}")
             print("------------------------------------------------")
+            print(placed)
 
     def get_all_orders(self,status_filter=None):
         self.load_orders()
@@ -221,13 +227,16 @@ class Inventory:
                 if choice == "1":
                     order['status'] = 'preparing'
                     print(f"Order with ID {order_id} is now 'preparing'.")
+                    print(updated)
                 elif choice == "2":
                     order['status'] = 'ready for pickup'
                     print(
                         f"Order with ID {order_id} is now 'ready for pickup'.")
+                    print(updated)
                 elif choice == "3":
                     order['status'] = 'delivered'
                     print(f"Order with ID {order_id} is now 'delivered'.")
+                    print(updated)
                 else:
                     print("Invalid choice. Order status remains unchanged.")
                 self.save_orders()
