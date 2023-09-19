@@ -69,7 +69,7 @@ class Inventory:
         for category, dishes in self.dishes.items():
             for dish in self.dishes[category]:
                 dish_details.append(
-                    f" Category: {category} -> Id : {dish.id}, Name : {dish.name}, Price : {dish.price}, Availability : {dish.availability}"
+                    f"Dish Id :{dish.id} | Name : {dish.name} | Price : {dish.price}  | Availability : {dish.availability} | Category: {category} "
                 )
         return dish_details
 

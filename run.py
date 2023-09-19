@@ -4,7 +4,7 @@ import pyfiglet
 text = pyfiglet.figlet_format("Zesty Zomato", width=150)
 updated = pyfiglet.figlet_format("Updated", width=100)
 removed = pyfiglet.figlet_format("Removed", width=100)
-exit = pyfiglet.figlet_format("Thank You !!", width=100)
+exit = pyfiglet.figlet_format("Thank You!!", width=100)
 inventory = Inventory()
 
 print(text)
@@ -42,9 +42,9 @@ while True:
     elif choice == "2":
         all_dishes = inventory.get_all_dishes()
         for dishdetails in all_dishes:
-            print("--------------------------------------------")
+            print("---------------------------------------------------------------------------------------")
             print(dishdetails)
-            print("--------------------------------------------")
+            print("---------------------------------------------------------------------------------------")
     elif choice == "3":
         all_dishes = inventory.get_all_dishes()
         for dishdetails in all_dishes:
