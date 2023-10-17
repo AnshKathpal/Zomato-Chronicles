@@ -20,6 +20,13 @@
             "price": 200.0,
             "availability": "Yes",
             "category": "All Day"
+        },
+        {
+            "id": 6,
+            "name": "Coke",
+            "price": 20.0,
+            "availability": "Yes",
+            "category": "All Day"
         }
     ],
     "Dinner": [
@@ -27,6 +34,13 @@
             "id": 4,
             "name": "Paneer",
             "price": 160.0,
+            "availability": "Yes",
+            "category": "Dinner"
+        },
+        {
+            "id": 5,
+            "name": "Dal",
+            "price": 190.0,
             "availability": "Yes",
             "category": "Dinner"
         }
